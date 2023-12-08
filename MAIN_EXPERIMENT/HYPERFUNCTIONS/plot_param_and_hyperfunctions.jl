@@ -36,31 +36,30 @@ result_list_control = [
 ]
 
 result_list_system = [
-    "SALEXP_chains_system_final_basal_A_S1_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_A_S2_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_A_S3_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_A_S4_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_A_S5_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_A_S6_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_B_S1_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_B_S2_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_B_S3_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_B_S4_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_B_S5_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_B_S6_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_C_S1_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_C_S2_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_C_S3_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_C_S4_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_C_S5_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_C_S6_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_D_S1_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_D_S2_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_D_S3_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_D_S4_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_D_S5_2023-10-21_genotoul.csv",
-    "SALEXP_chains_system_final_basal_D_S6_2023-10-21_genotoul.csv"
-]
+    "SALEXP_chains_system_final_basal_A_S1_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_A_S2_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_A_S3_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_A_S4_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_A_S5_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_A_S6_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_B_S1_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_B_S2_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_B_S3_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_B_S4_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_B_S5_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_B_S6_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_C_S1_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_C_S2_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_C_S3_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_C_S4_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_C_S5_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_C_S6_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_D_S1_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_D_S2_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_D_S3_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_D_S4_2023-07-29_genotoul.csv",
+    "SALEXP_chains_system_final_basal_D_S5_2023-07-30_genotoul.csv",
+    "SALEXP_chains_system_final_basal_D_S6_2023-07-30_genotoul.csv"]
 
 
 result_list_resistance = [
@@ -262,6 +261,7 @@ for i in 1:length(result_list_system)
                         pol_025[:, t] = [samp[t], quantile(pol, 0.025)]
                         pol_975[:, t] = [samp[t], quantile(pol, 0.975)]
                     end
+                    plot!(pl, subplot=p, legend=false)
                     plot!(pl, subplot=p, pol_mean[1, :], pol_mean[2, :], color=color_palette[strain], label=false)
                     plot!(pl, subplot=p, pol_025[1, :], pol_025[2, :], fillrange=pol_975[2, :], fillalpha=0.2, lw=0, color=color_palette[strain], label=false)
                     plot!(pl, subplot=p, ylabel="cell.mL⁻¹.day⁻¹")
@@ -475,7 +475,5 @@ plot!(subplot=10, bottom_margin=5mm, legend=true)
 
 ## PLOT HYPERFUNCTIONS
 ##IMPORT DATA
-
-
 savefig(pl, "./MAIN_EXPERIMENT/HYPERFUNCTIONS/figures/" * "param_according_to_salinity_" * string(today()) * ".png")
 pl
